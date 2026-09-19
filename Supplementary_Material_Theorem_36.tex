@@ -1,0 +1,815 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[bookmarks=false,hidelinks]{hyperref}
+\usepackage{microtype}
+\allowdisplaybreaks
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\SpanA}{\langle a\rangle}
+\newcommand{\mymod}{\pmod m}
+
+
+\title{Supplementary Material for\\
+\emph{On the Minimum Distance of High-rate Moore-Type Quasi-Cyclic LDPC Codes}\\[0.5ex]
+\large Detailed Algebraic Derivations for Weight-$8$ Cases II--VII}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Scope and relation to the main manuscript}
+This supplementary document provides the detailed algebraic derivations omitted from the main manuscript for Cases II--VII in the characterization of Hamming-weight-$8$ codewords of $\mathrm{Moore}(m,a,b,3)$ under the assumption $\operatorname{ord}_m(b)=3$.  Case I is derived in full in the main manuscript; the purpose of the present document is to supply the corresponding calculations for the remaining six matching configurations.  The notation, normalization, case labels, and condition labels \emph{(a)}--\emph{(d)} are those of the main manuscript.
+
+The correspondence between the case labels used below and the matching subcases is
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Case & Matching subcase & RREF & Free variables \\
+\midrule
+II   & $1\text{-}2\text{-}1$ & $A_{121}$ & $u_4,u_7,u_8$ \\
+III  & $1\text{-}2\text{-}2$ & $A_{122}$ & $u_6,u_7,u_8$ \\
+IV   & $2\text{-}1\text{-}2$ & $A_{212}$ & $u_4,u_6,u_7,u_8$ \\
+V    & $2\text{-}1\text{-}7$ & $A_{217}$ & $u_4,u_6,u_7,u_8$ \\
+VI   & $2\text{-}3\text{-}5$ & $A_{235}$ & $u_4,u_6,u_7,u_8$ \\
+VII  & $2\text{-}4\text{-}3$ & $A_{243}$ & $u_5,u_6,u_7,u_8$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Algebraic framework and conventions}
+All calculations are carried out in the finite field $\F_m$.  We use the normalization $c_1=(0,0)$ and write
+\[
+u_i=a^{t_i},\qquad u_1=1.
+\]
+Since $\operatorname{ord}_m(b)=3$, we have $b\neq1$ and
+\[
+1+b+b^2=0.
+\]
+All coefficients below are simplified using this identity.
+
+For a matching edge $\{c_i,c_q\}$ at level $s\in\{0,1,2\}$, the basic relation is
+\[
+x_i-x_q=(b^s-1)(u_q-u_i).
+\]
+For an oriented cycle
+\[
+\underline{i_1,i_2,\ldots,i_\ell}(s_1s_2\cdots s_\ell),
+\]
+the underlined indices denote the successive vertices and $s_r$ is the level of the edge joining $c_{i_r}$ to $c_{i_{r+1}}$, with $i_{\ell+1}=i_1$.  Summing the basic edge relations around the cycle eliminates the $x$-coordinates and gives a homogeneous linear equation in $u_1,\ldots,u_8$.
+
+For each matching configuration we proceed as follows.  First, we choose a spanning tree and form its fundamental-cycle system.  Second, we row-reduce the resulting homogeneous system in the fixed column order $(u_1,\ldots,u_8)$; zero rows are omitted.  Third, after imposing $u_1=1$, the first pivot relation gives condition \emph{(b)}, while the remaining pivot-variable expressions give condition \emph{(d)} through membership in $\SpanA$.  Finally, the level-$0$ coordinates and within-block distinctness conditions are reduced, modulo the main congruence, to conditions \emph{(a)} and \emph{(c)}.  Factors that differ by a nonzero scalar in $\F_m$ are identified, since they define the same nonvanishing condition.
+
+\paragraph{Labeling convention for Case VI.}
+For subcase $2\text{-}3\text{-}5$, we use the representative appearing in the proposition of the main manuscript.  Relative to the intermediate labeling arising during the enumeration, this representative is obtained by the relabeling $c_7\leftrightarrow c_8$.  This convention fixes the column order and yields the matrix $A_{235}$ reported in the main manuscript.
+
+\section{Case II: Subcase $1\text{-}2\text{-}1$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4}\},\ \{c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3},c_{6},c_{8}\},\ \{c_{2},c_{5}\},\ \{c_{4},c_{7}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{4}\},\ \{c_{2},c_{3}\},\ \{c_{5},c_{8}\},\ \{c_{6},c_{7}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{1},c_{6}\}_{1},\ \{c_{1},c_{8}\}_{1},\ \{c_{2},c_{5}\}_{1},\ \{c_{4},c_{7}\}_{1},\ \{c_{1},c_{4}\}_{2},\ \{c_{2},c_{3}\}_{2}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $16$ edges, it determines $9$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{3,1,6}(111) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&0=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,8}(111) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&0=0.
+\end{aligned}
+\]
+\item $ \underline{6,1,8}(111) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&0=0.
+\end{aligned}
+\]
+\item $ \underline{5,2,3,1,8}(12112) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{3} + \left(-1 - 2b\right)u_{5} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{6,1,4,7}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(-1 - 2b\right)u_{4} + \left(-1 - 2b\right)u_{6} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{1,3,2}(120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 - b\right)u_{1} + \left(-2 - b\right)u_{2} + \left(1 + 2b\right)u_{3}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,4}(120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(1 - b\right)u_{3} + \left(-2 - b\right)u_{4}=0.
+\end{aligned}
+\]
+\item $ \underline{5,2,3,1,6}(12110) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{3} + \left(1 - b\right)u_{5} + \left(-1 + b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{7,4,1,8}(1210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{4} + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{121}=
+\begin{bmatrix}
+1 & 0 & 0 & -1 & 0 & 0 & 1 + b & -1 - b \\
+0 & 1 & 0 & -1 & 0 & 0 & 2 + b & -2 - b \\
+0 & 0 & 1 & -1 & 0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0 & 1 & 0 & 1 + b & -2 - b \\
+0 & 0 & 0 & 0 & 0 & 1 & b & -1 - b
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{4},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=u_{4} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8},\\
+u_{2}&=u_{4} + \left(-2 - b\right)u_{7} + \left(2 + b\right)u_{8},\\
+u_{3}&=u_{4} - u_{7} + u_{8},\\
+u_{5}&=\left(-1 - b\right)u_{7} + \left(2 + b\right)u_{8},\\
+u_{6}&=-bu_{7} + \left(1 + b\right)u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 + u_{4} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{4}$:
+\[
+u_{4}=1 + \left(1 + b\right)u_{7} + \left(-1 - b\right)u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}&=\left(1 + 2b\right)u_{7} + \left(-1 - 2b\right)u_{8},\\
+x_{5}=x_{6}&=-1 + b + \left(-1 - 2b\right)u_{7} + \left(2 + b\right)u_{8},\\
+x_{7}=x_{8}&=-1 + b + \left(1 - b\right)u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+u_{7} - u_{8}\not\equiv 0\mymod,\\
+1 + bu_{7} + \left(-1 - b\right)u_{8}\not\equiv 0\mymod,\\
+1 - u_{8}\not\equiv 0\mymod,\\
+1 + 2bu_{7} + \left(-1 - 2b\right)u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_7 \neq t_8&\Longleftrightarrow u_{7} - u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_8 \neq 0&\Longleftrightarrow 1 - u_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow 1 + bu_{7} + \left(-1 - b\right)u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow 1 + 2bu_{7} + \left(-1 - 2b\right)u_{8}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Case III: Subcase $1\text{-}2\text{-}2$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4},c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3}\},\ \{c_{2},c_{5}\},\ \{c_{4},c_{7}\},\ \{c_{6},c_{8}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{4}\},\ \{c_{2},c_{6}\},\ \{c_{3},c_{7}\},\ \{c_{5},c_{8}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{2},c_{5}\}_{1},\ \{c_{4},c_{7}\}_{1},\ \{c_{6},c_{8}\}_{1},\ \{c_{1},c_{4}\}_{2},\ \{c_{2},c_{6}\}_{2},\ \{c_{1},c_{2}\}_{0}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $16$ edges, it determines $9$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{3,1,4,7}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(-1 - 2b\right)u_{3} + \left(-1 - 2b\right)u_{4} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{5,2,6,8}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{5} + \left(-1 - 2b\right)u_{6} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,4}(120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(1 - b\right)u_{3} + \left(-2 - b\right)u_{4}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,2,5}(1010) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 + b\right)u_{1} + \left(1 - b\right)u_{2} + \left(1 - b\right)u_{3} + \left(-1 + b\right)u_{5}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,2,6}(1020) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 + b\right)u_{1} + \left(2 + b\right)u_{2} + \left(1 - b\right)u_{3} + \left(-2 - b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{4,1,2,5}(2010) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(1 - b\right)u_{2} + \left(2 + b\right)u_{4} + \left(-1 + b\right)u_{5}=0.
+\end{aligned}
+\]
+\item $ \underline{4,1,2,6}(2020) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(2 + b\right)u_{2} + \left(2 + b\right)u_{4} + \left(-2 - b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{5,2,6}(120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(1 - b\right)u_{5} + \left(-2 - b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{7,4,1,2,6,8}(120210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(2 + b\right)u_{2} + \left(1 + 2b\right)u_{4} + \left(-1 - 2b\right)u_{6}\\ &\qquad  + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{122}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & -1 + b & -1 & 1 - b \\
+0 & 1 & 0 & 0 & 0 & -1 + b & 0 & -b \\
+0 & 0 & 1 & 0 & 0 & b & -1 & -b \\
+0 & 0 & 0 & 1 & 0 & -1 & -1 & 1 \\
+0 & 0 & 0 & 0 & 1 & b & 0 & -1 - b
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{6},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=\left(1 - b\right)u_{6} + u_{7} + \left(-1 + b\right)u_{8},\\
+u_{2}&=\left(1 - b\right)u_{6} + bu_{8},\\
+u_{3}&=-bu_{6} + u_{7} + bu_{8},\\
+u_{4}&=u_{6} + u_{7} - u_{8},\\
+u_{5}&=-bu_{6} + \left(1 + b\right)u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 + \left(1 - b\right)u_{6} + u_{7} + \left(-1 + b\right)u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{7}$:
+\[
+u_{7}=1 + \left(-1 + b\right)u_{6} + \left(1 - b\right)u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}=x_{5}=x_{6}&=\left(-1 + b\right)u_{6} + \left(1 - b\right)u_{8},\\
+x_{7}=x_{8}&=\left(-2 + 2b\right)u_{6} + \left(2 - 2b\right)u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+u_{6} - u_{8}\not\equiv 0\mymod,\\
+1 + \left(-1 + b\right)u_{6} - bu_{8}\not\equiv 0\mymod,\\
+1 - 2u_{6} + u_{8}\not\equiv 0\mymod,\\
+1 + 2bu_{6} + \left(-1 - 2b\right)u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_6 \neq t_8&\Longleftrightarrow u_{6} - u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_7 \neq t_8&\Longleftrightarrow 1 + \left(-1 + b\right)u_{6} - bu_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow 1 - 2u_{6} + u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow 1 + 2bu_{6} + \left(-1 - 2b\right)u_{8}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Case IV: Subcase $2\text{-}1\text{-}2$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4}\},\ \{c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3}\},\ \{c_{2},c_{4}\},\ \{c_{5},c_{7}\},\ \{c_{6},c_{8}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{5}\},\ \{c_{3},c_{6}\},\ \{c_{2},c_{7}\},\ \{c_{4},c_{8}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{2},c_{4}\}_{1},\ \{c_{5},c_{7}\}_{1},\ \{c_{6},c_{8}\}_{1},\ \{c_{1},c_{5}\}_{2},\ \{c_{2},c_{7}\}_{2},\ \{c_{3},c_{6}\}_{2}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $12$ edges, it determines $5$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{4,2,7,5,1,3,6,8}(12121212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{2} + \left(1 + 2b\right)u_{3} + \left(-1 - 2b\right)u_{4}\\ &\qquad  + \left(1 + 2b\right)u_{5} + \left(-1 - 2b\right)u_{6} + \left(-1 - 2b\right)u_{7} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{1,5,7,2}(2120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(2 + b\right)u_{1} + \left(-2 - b\right)u_{2} + \left(-1 - 2b\right)u_{5} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,5,7,2,4}(121210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(-1 - 2b\right)u_{2} + \left(1 - b\right)u_{3} + \left(-1 + b\right)u_{4}\\ &\qquad  + \left(-1 - 2b\right)u_{5} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{5,1,3,6}(2120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{3} + \left(2 + b\right)u_{5} + \left(-2 - b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{7,5,1,3,6,8}(121210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{3} + \left(1 + 2b\right)u_{5} + \left(-1 - 2b\right)u_{6}\\ &\qquad  + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{212}=
+\begin{bmatrix}
+1 & 0 & 0 & -1 & 0 & -1 - b & b & 1 \\
+0 & 1 & 0 & -1 & 0 & 0 & b & -b \\
+0 & 0 & 1 & -1 & 0 & -1 - b & 0 & 1 + b \\
+0 & 0 & 0 & 0 & 1 & -1 & -1 & 1
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{4},\ u_{6},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=u_{4} + \left(1 + b\right)u_{6} - bu_{7} - u_{8},\\
+u_{2}&=u_{4} - bu_{7} + bu_{8},\\
+u_{3}&=u_{4} + \left(1 + b\right)u_{6} + \left(-1 - b\right)u_{8},\\
+u_{5}&=u_{6} + u_{7} - u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 + u_{4} + \left(1 + b\right)u_{6} - bu_{7} - u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{4}$:
+\[
+u_{4}=1 + \left(-1 - b\right)u_{6} + bu_{7} + u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}&=\left(1 + 2b\right)u_{7} + \left(-1 - 2b\right)u_{8},\\
+x_{5}=x_{6}&=-2 - b + \left(2 + b\right)u_{6} + \left(2 + b\right)u_{7} + \left(-2 - b\right)u_{8},\\
+x_{7}=x_{8}&=-2 - b + \left(1 + 2b\right)u_{6} + \left(2 + b\right)u_{7} + \left(-1 - 2b\right)u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+u_{7} - u_{8}\not\equiv 0\mymod,\\
+1 - u_{6} - u_{7} + u_{8}\not\equiv 0\mymod,\\
+1 + \left(-1 - b\right)u_{6} - u_{7} + \left(1 + b\right)u_{8}\not\equiv 0\mymod,\\
+1 - u_{6} + bu_{7} - bu_{8}\not\equiv 0\mymod,\\
+1 + \left(-1 - b\right)u_{6} + bu_{7}\not\equiv 0\mymod,\\
+u_{6} - u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_6 \neq t_8&\Longleftrightarrow u_{6} - u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_7 \neq t_8&\Longleftrightarrow u_{7} - u_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow 1 - u_{6} - u_{7} + u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow 1 + \left(-1 - b\right)u_{6} - u_{7} + \left(1 + b\right)u_{8}\not\equiv0\mymod,\\
+\text{c3}&\Longleftrightarrow 1 - u_{6} + bu_{7} - bu_{8}\not\equiv0\mymod,\\
+\text{c4}&\Longleftrightarrow 1 + \left(-1 - b\right)u_{6} + bu_{7}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Case V: Subcase $2\text{-}1\text{-}7$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4}\},\ \{c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3}\},\ \{c_{2},c_{4}\},\ \{c_{5},c_{7}\},\ \{c_{6},c_{8}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{5}\},\ \{c_{2},c_{6}\},\ \{c_{3},c_{7}\},\ \{c_{4},c_{8}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{2},c_{4}\}_{1},\ \{c_{5},c_{7}\}_{1},\ \{c_{6},c_{8}\}_{1},\ \{c_{1},c_{5}\}_{2},\ \{c_{2},c_{6}\}_{2},\ \{c_{1},c_{2}\}_{0}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $12$ edges, it determines $5$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{3,1,5,7}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(-1 - 2b\right)u_{3} + \left(-1 - 2b\right)u_{5} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{4,2,6,8}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{4} + \left(-1 - 2b\right)u_{6} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,2,4}(1010) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 + b\right)u_{1} + \left(1 - b\right)u_{2} + \left(1 - b\right)u_{3} + \left(-1 + b\right)u_{4}=0.
+\end{aligned}
+\]
+\item $ \underline{5,1,2,6}(2020) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(2 + b\right)u_{2} + \left(2 + b\right)u_{5} + \left(-2 - b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{7,5,1,2,6,8}(120210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(2 + b\right)u_{2} + \left(1 + 2b\right)u_{5} + \left(-1 - 2b\right)u_{6}\\ &\qquad  + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{217}=
+\begin{bmatrix}
+1 & 0 & 0 & -1 & 0 & -1 & -1 & 2 \\
+0 & 1 & 0 & -1 & 0 & -1 & 0 & 1 \\
+0 & 0 & 1 & -1 & 0 & 0 & -1 & 1 \\
+0 & 0 & 0 & 0 & 1 & -1 & -1 & 1
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{4},\ u_{6},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=u_{4} + u_{6} + u_{7} - 2u_{8},\\
+u_{2}&=u_{4} + u_{6} - u_{8},\\
+u_{3}&=u_{4} + u_{7} - u_{8},\\
+u_{5}&=u_{6} + u_{7} - u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 + u_{4} + u_{6} + u_{7} - 2u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{7}$:
+\[
+u_{7}=1 - u_{4} - u_{6} + 2u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}&=\left(-1 + b\right)u_{6} + \left(1 - b\right)u_{8},\\
+x_{5}=x_{6}&=\left(-2 - b\right)u_{4} + \left(2 + b\right)u_{8},\\
+x_{7}=x_{8}&=\left(-2 - b\right)u_{4} + \left(-1 + b\right)u_{6} + 3u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+u_{6} - u_{8}\not\equiv 0\mymod,\\
+u_{4} - u_{8}\not\equiv 0\mymod,\\
+u_{4} - bu_{6} + \left(-1 + b\right)u_{8}\not\equiv 0\mymod,\\
+u_{4} + bu_{6} + \left(-1 - b\right)u_{8}\not\equiv 0\mymod,\\
+1 - u_{4} - u_{6} + u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_4 \neq t_8&\Longleftrightarrow u_{4} - u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_6 \neq t_8&\Longleftrightarrow u_{6} - u_{8}\not\equiv0\mymod,\\
+\text{a3: }\ t_7 \neq t_8&\Longleftrightarrow 1 - u_{4} - u_{6} + u_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow u_{4} + bu_{6} + \left(-1 - b\right)u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow u_{4} - bu_{6} + \left(-1 + b\right)u_{8}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Case VI: Subcase $2\text{-}3\text{-}5$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4}\},\ \{c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3}\},\ \{c_{2},c_{6}\},\ \{c_{5},c_{7}\},\ \{c_{4},c_{8}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{5}\},\ \{c_{2},c_{4}\},\ \{c_{3},c_{7}\},\ \{c_{6},c_{8}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{2},c_{6}\}_{1},\ \{c_{4},c_{8}\}_{1},\ \{c_{5},c_{7}\}_{1},\ \{c_{1},c_{5}\}_{2},\ \{c_{2},c_{4}\}_{2},\ \{c_{1},c_{2}\}_{0}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $12$ edges, it determines $5$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{3,1,5,7}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(-1 - 2b\right)u_{3} + \left(-1 - 2b\right)u_{5} + \left(1 + 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{6,2,4,8}(1212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{4} + \left(-1 - 2b\right)u_{6} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,2,4}(1020) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 + b\right)u_{1} + \left(2 + b\right)u_{2} + \left(1 - b\right)u_{3} + \left(-2 - b\right)u_{4}=0.
+\end{aligned}
+\]
+\item $ \underline{5,1,2,6}(2010) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(1 - b\right)u_{2} + \left(2 + b\right)u_{5} + \left(-1 + b\right)u_{6}=0.
+\end{aligned}
+\]
+\item $ \underline{7,5,1,2,4,8}(120210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-2 - b\right)u_{1} + \left(2 + b\right)u_{2} + \left(-1 - 2b\right)u_{4} + \left(1 + 2b\right)u_{5}\\ &\qquad  + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{235}=
+\begin{bmatrix}
+1 & 0 & 0 & b & 0 & -1 - b & -1 & 1 \\
+0 & 1 & 0 & -1 & 0 & -1 & 0 & 1 \\
+0 & 0 & 1 & b & 0 & 0 & -1 & -b \\
+0 & 0 & 0 & 0 & 1 & -1 - b & -1 & 1 + b
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{4},\ u_{6},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=-bu_{4} + \left(1 + b\right)u_{6} + u_{7} - u_{8},\\
+u_{2}&=u_{4} + u_{6} - u_{8},\\
+u_{3}&=-bu_{4} + u_{7} + bu_{8},\\
+u_{5}&=\left(1 + b\right)u_{6} + u_{7} + \left(-1 - b\right)u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 - bu_{4} + \left(1 + b\right)u_{6} + u_{7} - u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{4}$:
+\[
+u_{4}=1 + b - bu_{6} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}&=\left(-2 - b\right)u_{6} + \left(2 + b\right)u_{8},\\
+x_{5}=x_{6}&=-2 - b + \left(1 + 2b\right)u_{6} + \left(2 + b\right)u_{7} + \left(-1 - 2b\right)u_{8},\\
+x_{7}=x_{8}&=-2 - b + \left(-1 + b\right)u_{6} + \left(2 + b\right)u_{7} + \left(1 - b\right)u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+u_{6} - u_{8}\not\equiv 0\mymod,\\
+1 + \left(-1 - b\right)u_{6} - u_{7} + \left(1 + b\right)u_{8}\not\equiv 0\mymod,\\
+1 - bu_{6} - u_{7} + bu_{8}\not\equiv 0\mymod,\\
+1 + \left(-2 - b\right)u_{6} - u_{7} + \left(2 + b\right)u_{8}\not\equiv 0\mymod,\\
+1 + \left(-2 - b\right)u_{6} + bu_{7} + u_{8}\not\equiv 0\mymod,\\
+1 + \left(-1 - b\right)u_{6} + bu_{7}\not\equiv 0\mymod,\\
+u_{6} + \left(-1 - b\right)u_{7} + bu_{8}\not\equiv 0\mymod,\\
+u_{7} - u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_4 \neq t_8&\Longleftrightarrow 1 + \left(-1 - b\right)u_{6} - u_{7} + \left(1 + b\right)u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_6 \neq t_8&\Longleftrightarrow u_{6} - u_{8}\not\equiv0\mymod,\\
+\text{a3: }\ t_7 \neq t_8&\Longleftrightarrow u_{7} - u_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow 1 + \left(-2 - b\right)u_{6} + bu_{7} + u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow 1 + \left(-1 - b\right)u_{6} + bu_{7}\not\equiv0\mymod,\\
+\text{c3}&\Longleftrightarrow u_{6} + \left(-1 - b\right)u_{7} + bu_{8}\not\equiv0\mymod,\\
+\text{c4}&\Longleftrightarrow 1 + \left(-2 - b\right)u_{6} - u_{7} + \left(2 + b\right)u_{8}\not\equiv0\mymod,\\
+\text{c5}&\Longleftrightarrow 1 - bu_{6} - u_{7} + bu_{8}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Case VII: Subcase $2\text{-}4\text{-}3$}
+\subsection{Matching configuration and fundamental-cycle system}
+The matching set is
+\[
+\begin{aligned}
+M_0&=\left\{\{c_{1},c_{2}\},\ \{c_{3},c_{4}\},\ \{c_{5},c_{6}\},\ \{c_{7},c_{8}\}\right\},\\
+M_1&=\left\{\{c_{1},c_{3}\},\ \{c_{2},c_{7}\},\ \{c_{4},c_{5}\},\ \{c_{6},c_{8}\}\right\},\\
+M_2&=\left\{\{c_{1},c_{5}\},\ \{c_{2},c_{6}\},\ \{c_{3},c_{7}\},\ \{c_{4},c_{8}\}\right\}.
+\end{aligned}
+\]
+We choose the spanning tree
+\[
+F={\{c_{1},c_{3}\}_{1},\ \{c_{2},c_{7}\}_{1},\ \{c_{4},c_{5}\}_{1},\ \{c_{6},c_{8}\}_{1},\ \{c_{1},c_{5}\}_{2},\ \{c_{2},c_{6}\}_{2},\ \{c_{3},c_{7}\}_{2}}.
+\]
+This tree has $7$ edges.  Since the matching graph has $12$ edges, it determines $5$ fundamental cycles.  The associated cycle equations are listed below.
+\begin{enumerate}[label=(\arabic*)]
+\item $ \underline{4,5,1,3,7,2,6,8}(12121212) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{2} + \left(1 + 2b\right)u_{3} + \left(-1 - 2b\right)u_{4}\\ &\qquad  + \left(1 + 2b\right)u_{5} + \left(-1 - 2b\right)u_{6} + \left(-1 - 2b\right)u_{7} + \left(1 + 2b\right)u_{8}=0.
+\end{aligned}
+\]
+\item $ \underline{1,3,7,2}(1210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 - b\right)u_{1} + \left(-1 + b\right)u_{2} + \left(1 + 2b\right)u_{3} + \left(-1 - 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{3,1,5,4}(1210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{1} + \left(1 - b\right)u_{3} + \left(-1 + b\right)u_{4} + \left(-1 - 2b\right)u_{5}=0.
+\end{aligned}
+\]
+\item $ \underline{5,1,3,7,2,6}(212120) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(-1 - 2b\right)u_{1} + \left(1 + 2b\right)u_{2} + \left(1 + 2b\right)u_{3} + \left(2 + b\right)u_{5}\\ &\qquad  + \left(-2 - b\right)u_{6} + \left(-1 - 2b\right)u_{7}=0.
+\end{aligned}
+\]
+\item $ \underline{7,2,6,8}(1210) $.  The resulting cycle equation is
+\[
+\begin{aligned}
+&\left(1 + 2b\right)u_{2} + \left(-1 - 2b\right)u_{6} + \left(1 - b\right)u_{7} + \left(-1 + b\right)u_{8}=0.
+\end{aligned}
+\]
+\end{enumerate}
+After deleting zero equations and row-reducing the remaining system in the column order $(u_1,\ldots,u_8)$, we obtain
+\[
+A_{243}=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & -1 & 0 & -1 - b & 1 + b \\
+0 & 1 & 0 & 0 & 0 & -1 & -1 - b & 1 + b \\
+0 & 0 & 1 & 0 & -1 - b & 1 + b & -1 & 0 \\
+0 & 0 & 0 & 1 & -1 - b & 1 + b & 0 & -1
+\end{bmatrix}.
+\]
+Thus the fundamental-cycle system has the RREF reported in the main manuscript.
+
+\subsection{RREF solution and conditions \emph{(b)} and \emph{(d)}}
+The free variables are
+\[
+u_{5},\ u_{6},\ u_{7},\ u_{8}.
+\]
+The pivot variables are therefore
+\[
+\begin{aligned}
+u_{1}&=u_{5} + \left(1 + b\right)u_{7} + \left(-1 - b\right)u_{8},\\
+u_{2}&=u_{6} + \left(1 + b\right)u_{7} + \left(-1 - b\right)u_{8},\\
+u_{3}&=\left(1 + b\right)u_{5} + \left(-1 - b\right)u_{6} + u_{7},\\
+u_{4}&=\left(1 + b\right)u_{5} + \left(-1 - b\right)u_{6} + u_{8}.
+\end{aligned}
+\]
+Imposing $u_1=1$ gives the main congruence
+\[
+-1 + u_{5} + \left(1 + b\right)u_{7} + \left(-1 - b\right)u_{8}=0,
+\]
+which is condition \emph{(b)} after substituting $u_i=a^{t_i}$.  Requiring the remaining dependent variables above to belong to $\SpanA$ gives condition \emph{(d)}.
+
+\subsection{Distinctness conditions \emph{(a)} and \emph{(c)}}
+For the distinctness calculation we solve the main congruence for $u_{5}$:
+\[
+u_{5}=1 + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}.
+\]
+After this substitution, the common $x$-coordinate of each block of $M_0$ is
+\[
+\begin{aligned}
+x_{1}=x_{2}&=0,\\
+x_{3}=x_{4}&=1 + 2b + \left(-2 - b\right)u_{6} - 3bu_{7} + \left(1 + 2b\right)u_{8},\\
+x_{5}=x_{6}&=\left(-1 - 2b\right)u_{7} + \left(1 + 2b\right)u_{8},\\
+x_{7}=x_{8}&=\left(-1 + b\right)u_{6} + \left(-1 - 2b\right)u_{7} + \left(2 + b\right)u_{8}.
+\end{aligned}
+\]
+Hence different level-$0$ blocks have distinct $x$-coordinates, and the columns inside each block are distinct, exactly when the following factors are all nonzero (factors differing by a nonzero scalar are identified):
+\[
+\begin{gathered}
+1 + bu_{6} + \left(-2 - b\right)u_{7} + u_{8}\not\equiv 0\mymod,\\
+u_{7} - u_{8}\not\equiv 0\mymod,\\
+u_{6} + bu_{7} + \left(-1 - b\right)u_{8}\not\equiv 0\mymod,\\
+1 + bu_{6} + \left(-1 - b\right)u_{7}\not\equiv 0\mymod,\\
+1 - u_{6} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}\not\equiv 0\mymod,\\
+u_{6} - u_{8}\not\equiv 0\mymod.
+\end{gathered}
+\]
+Using the main congruence, these factors reduce to condition \emph{(a)} together with the nonzero factors in condition \emph{(c)}.  Explicitly,
+\[
+\begin{aligned}
+\text{a1: }\ t_5 \neq t_6&\Longleftrightarrow 1 - u_{6} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}\not\equiv0\mymod,\\
+\text{a2: }\ t_6 \neq t_8&\Longleftrightarrow u_{6} - u_{8}\not\equiv0\mymod,\\
+\text{a3: }\ t_7 \neq t_8&\Longleftrightarrow u_{7} - u_{8}\not\equiv0\mymod,\\
+\text{c1}&\Longleftrightarrow 1 + bu_{6} + \left(-2 - b\right)u_{7} + u_{8}\not\equiv0\mymod,\\
+\text{c2}&\Longleftrightarrow u_{6} + bu_{7} + \left(-1 - b\right)u_{8}\not\equiv0\mymod,\\
+\text{c3}&\Longleftrightarrow 1 + bu_{6} + \left(-1 - b\right)u_{7}\not\equiv0\mymod,\\
+\text{c4}&\Longleftrightarrow 1 - u_{6} + \left(-1 - b\right)u_{7} + \left(1 + b\right)u_{8}\not\equiv0\mymod.
+\end{aligned}
+\]
+Hence conditions \emph{(a)} and \emph{(c)} are precisely the level-$0$ and within-block distinctness requirements for this matching configuration.  Together with conditions \emph{(b)} and \emph{(d)}, they give the necessary and sufficient algebraic conditions for this case.
+\section{Conclusion}
+For each of Cases II--VII, the fundamental-cycle equations derived from the corresponding matching configuration reduce to the RREF stated in the main manuscript.  Under the normalization $u_1=1$, the pivot relations yield condition \emph{(b)} and the subgroup-membership requirements in condition \emph{(d)}.  The remaining level-$0$ and within-block distinctness constraints yield exactly conditions \emph{(a)} and \emph{(c)}.  Consequently, the calculations in this supplement complete the algebraic verification of the six alternatives omitted from the detailed proof of the Hamming-weight-$8$ existence theorem.
+
+\end{document}

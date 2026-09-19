@@ -1,0 +1,1003 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+\usepackage{enumitem}
+\usepackage[bookmarks=false,hidelinks]{hyperref}
+\usepackage{microtype}
+\allowdisplaybreaks
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\suppc}{\operatorname{supp}(\mathbf{c})}
+\newcommand{\mymod}{\pmod{m}}
+\newcommand{\boldc}{\boldsymbol{c}}
+\newcommand{\Moore}{\mathcal{M}oore}
+\newtheorem{prop}{Proposition}
+
+\title{Supplementary Material A for\\
+\emph{On the Minimum Distance of High-rate Moore-Type Quasi-Cyclic LDPC Codes}\\[0.6ex]
+\large Complete Proof of Proposition~29: Classification of Weight-$8$ Matching Configurations}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Scope and notation}
+This supplementary document contains the complete enumeration proof of Proposition~29 in the main manuscript. It replaces Appendix~IX-A of the submitted version. The notation and case labels are kept identical to those in the main manuscript.
+
+Let $m$ be an odd prime, let $a,b\in\Z_m^*$ satisfy
+$\operatorname{ord}_m(a)=k$ and $\operatorname{ord}_m(b)=j$, and assume $j\ge 3$. For the code $\Moore(m,a,b,3)$, a column is represented by
+\[
+ c(x,t)=\bigl[x,\ x+(b-1)a^t,\ x+(b^2-1)a^t\bigr]^T,
+ \qquad x\in\Z_m,\quad t\in\Z_k.
+\]
+For two support columns $c_i=c(x_i,t_i)$ and $c_q=c(x_q,t_q)$ and a level $s\in\{0,1,2\}$, we write $c_i\sim_s c_q$ if
+\[
+ x_i+(b^s-1)a^{t_i}\equiv x_q+(b^s-1)a^{t_q}\pmod m.
+\]
+For each level $s$, the equivalence classes of $\sim_s$ form the matching partition $M_s$, and
+$M=(M_0,M_1,M_2)$ is the matching configuration.
+
+The proof below uses the following facts established in the main manuscript.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \textbf{Column uniqueness (Lemma~13).} Two represented columns satisfy
+$c(x_1,t_1)=c(x_2,t_2)$ if and only if $x_1=x_2$ and $t_1=t_2$.
+\item \textbf{Repeated-pair criterion (Lemma~14).} If two distinct support columns match at two distinct levels, then they are equal; hence such a candidate support is impossible.
+\item \textbf{Isomorphism reduction (Lemma~19).} Weight-preserving isomorphic matching configurations describe the same support configurations up to a relabeling of the support columns.
+\item \textbf{Weight-$8$ block-size restriction (Lemma~20).} At each of the three matching levels, the block-size type is either $2+2+2+2$ or $4+2+2$.
+\item \textbf{Normalization (Corollary~23).} Up to an affine permutation preserving the codeword-support property and Hamming weight, one may assume $c_1=c(0,0)$.
+\item \textbf{Completeness of the enumeration (Algorithm~1).} Every even matching block admits a refinement into disjoint $2$-matchings. Enumerating all pairwise refinements, all same-level mergings, closing under forced matchings, discarding repeated-column branches, and then reducing by weight-preserving isomorphism yields all legal matching configurations.
+\end{enumerate}
+
+\section{Statement of Proposition~29}
+\begin{prop}[Proposition~29 of the main manuscript]
+Let $\boldc$ be a codeword of $\Moore(m,a,b,3)$ with Hamming weight $8$. Then, without loss of generality, the matching configuration of $\boldc$ is one of the following seven forms.
+
+\begin{enumerate}[label=\textbf{Case \Roman*:},leftmargin=*]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_4\},\{c_5,c_7\},\{c_6,c_8\}\},\\
+M_2=\{\{c_1,c_4,c_6,c_7\},\{c_2,c_8\},\{c_3,c_5\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3,c_6,c_8\},\{c_2,c_5\},\{c_4,c_7\}\},\\
+M_2=\{\{c_1,c_4\},\{c_2,c_3\},\{c_5,c_8\},\{c_6,c_7\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4,c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_5\},\{c_4,c_7\},\{c_6,c_8\}\},\\
+M_2=\{\{c_1,c_4\},\{c_2,c_6\},\{c_3,c_7\},\{c_5,c_8\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_4\},\{c_5,c_7\},\{c_6,c_8\}\},\\
+M_2=\{\{c_1,c_5\},\{c_2,c_7\},\{c_3,c_6\},\{c_4,c_8\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_4\},\{c_5,c_7\},\{c_6,c_8\}\},\\
+M_2=\{\{c_1,c_5\},\{c_2,c_6\},\{c_3,c_7\},\{c_4,c_8\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_6\},\{c_5,c_7\},\{c_4,c_8\}\},\\
+M_2=\{\{c_1,c_5\},\{c_2,c_4\},\{c_3,c_7\},\{c_6,c_8\}\}.
+\end{cases}
+\]
+\item
+\[
+\begin{cases}
+M_0=\{\{c_1,c_2\},\{c_3,c_4\},\{c_5,c_6\},\{c_7,c_8\}\},\\
+M_1=\{\{c_1,c_3\},\{c_2,c_7\},\{c_4,c_5\},\{c_6,c_8\}\},\\
+M_2=\{\{c_1,c_5\},\{c_2,c_6\},\{c_3,c_7\},\{c_4,c_8\}\}.
+\end{cases}
+\]
+\end{enumerate}
+\end{prop}
+
+\section{Complete enumeration proof}
+\begin{proof}
+Let $\boldc$ be a codeword of $\Moore(m,a,b,3)$ of Hamming weight $8$. By Corollary~23 of the main manuscript, we may assume without loss of generality that $c_1=c(0,0)$.
+
+By Lemma~20 of the main manuscript, at each matching level only the block-size types $2+2+2+2$ and $4+2+2$ can occur. By Algorithm~1 of the main manuscript, it is sufficient to begin with pairwise refinements; the possible and forced mergings are treated below.
+
+\emph{Enumeration procedure.} Every even matching block admits a pairwise refinement. We enumerate these refinements, include same-level mergings, and close each candidate under the matchings forced by its congruences, as in Algorithm~1 of the main manuscript. At each stage, repeated-column tests discard impossible branches, and relabelings preserving the fixed levels identify equivalent choices. The calculations below give the surviving configurations; the final isomorphism reduction identifies seven representatives.
+
+After relabeling the support columns, we may refine the matching at level $s=0$ as
+$$
+M_0=
+\bigl\{
+\{c_1,c_2\},
+\{c_3,c_4\},
+\{c_5,c_6\},
+\{c_7,c_8\}
+\bigr\}.
+$$
+Equivalently, the first row of the support matrix is written as
+$$
+0,0,x,x,y,y,z,z.
+$$
+This is only a pairwise refinement of the matching at level $s=0$;
+we do not assume that $0,x,y,z$ are pairwise distinct. Thus the
+support matrix has the form
+$$
+\suppc=[c_1,c_2,\ldots,c_8],
+$$
+where
+$$
+\begin{aligned}
+    \suppc
+    =&\left[
+    \begin{array}{cccc}
+        0 & 0 & x & x \\
+        b-1 & (b-1)a^{t_2}
+        & x+(b-1)a^{t_3} & x+(b-1)a^{t_4} \\
+        b^2-1 & (b^2-1)a^{t_2}
+        & x+(b^2-1)a^{t_3} & x+(b^2-1)a^{t_4}
+    \end{array}
+    \right. \\
+    &\left.
+    \begin{array}{cccc}
+        y & y & z & z \\
+        y+(b-1)a^{t_5} & y+(b-1)a^{t_6}
+        & z+(b-1)a^{t_7} & z+(b-1)a^{t_8} \\
+        y+(b^2-1)a^{t_5} & y+(b^2-1)a^{t_6}
+        & z+(b^2-1)a^{t_7} & z+(b^2-1)a^{t_8}
+    \end{array}
+    \right].
+\end{aligned}
+$$
+
+By Lemma~14 of the main manuscript, if the same pair of distinct support columns is matched at two different levels, then the two columns coincide. Therefore, every branch containing such a repeated pair is discarded.
+
+At each step below, we enumerate all admissible pairwise matchings which contain no pair already matched at a previous level. The residual relabeling symmetries preserving the previously fixed matchings are used to identify equivalent choices.
+
+Since the labels of the support columns are arbitrary, we may assume
+that $c_1$ is matched with $c_3$ at level $s=1$. At level $s=2$, the
+column $c_1$ cannot be matched with $c_2$ or $c_3$. Up to the
+remaining relabeling symmetries, there are only two possibilities:
+either $c_1$ is matched with the other column in the same $M_0$-block
+as $c_3$, or it is matched with a column in another $M_0$-block.
+Hence we obtain the following two principal cases:
+\begin{align*}
+    \text{Case 1}
+    \begin{cases}
+    	b-1 &\equiv x+(b-1)a^{t_3}\mymod, \\
+    	b^2-1 &\equiv x+(b^2-1)a^{t_4}\mymod,
+    \end{cases}
+    \text{Case 2}
+    \begin{cases}
+    	b-1 &\equiv x+(b-1)a^{t_3}\mymod, \\
+    	b^2-1 &\equiv y+(b^2-1)a^{t_5}\mymod.
+    \end{cases}
+    \end{align*}
+We now discuss the possible matchings at levels $s=1$ and $s=2$ in these two cases.
+\paragraph{Case 1}
+In this case, the support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{cccc}
+			0 & 0 
+			& x & x \\
+			b-1 & (b-1)a^{t_2} 
+			& b-1 & (b-1)+\frac{b}{b+1}x\\
+            b^2 -1 & (b^2-1)a^{t_2} 
+			& b^2-1-bx &b^2-1
+            \end{array}
+            \right.\\
+			~&~& \left. \begin{array}{cccc}
+             y & y 
+			& z & z\\
+			  y+(b-1)a^{t_5} & y+(b-1)a^{t_6}
+			& z+(b-1)a^{t_7} & z+(b-1)a^{t_8} \\
+			  y+(b^2-1)a^{t_5} & y+(b^2-1)a^{t_6}
+			& z+(b^2-1)a^{t_7} & z+(b^2-1)a^{t_8}
+        \end{array}
+        \right].
+\end{eqnarray*}
+Since $j\geq 3$, we have $b+1\not\equiv0\mymod$, so the
+above expressions are well defined.
+
+At level $s=1$, up to relabeling, there are two possible matchings which contain no pair already matched at level $s=0$:
+\[
+\text{Case 1-1:}\qquad
+\begin{cases}
+(b-1)+\dfrac{b}{b+1}x \equiv (b-1)a^{t_2}\mymod,\\
+y+(b-1)a^{t_5} \equiv z+(b-1)a^{t_7}\mymod,\\
+y+(b-1)a^{t_6} \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\[
+\text{Case 1-2:}\qquad
+\begin{cases}
+(b-1)+\dfrac{b}{b+1}x \equiv z+(b-1)a^{t_7}\mymod,\\
+(b-1)a^{t_2} \equiv y+(b-1)a^{t_5}\mymod,\\
+y+(b-1)a^{t_6} \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\paragraph{Case 1-1}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{ccccc}
+			0 & 0 & x & x & y\\
+			  b-1 & b-1+\frac{b}{b+1}x & b-1 & b-1+\frac{b}{b+1}x & y+(b-1)a^{t_5}\\
+            b^2 -1 & b^2-1+bx & b^2-1-bx &b^2-1 & y+(b^2-1)a^{t_5}
+            \end{array} \right. \\
+		~&~& \left. \begin{array}{ccc} 
+            y & z & z\\
+		      y+(b-1)a^{t_6} & y+(b-1)a^{t_5} & y+(b-1)a^{t_6} \\
+			y+(b^2-1)a^{t_6} & (b+1)y-bz+(b^2-1)a^{t_5} & (b+1)y-bz+(b^2-1)a^{t_6}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, if
+$b^2-1+bx\equiv b^2-1-bx$,
+then $x\equiv0\mymod$, which forces $c_1=c_3$, a contradiction. 
+Hence, up to relabeling, the only remaining subcase is the following.
+
+\paragraph{Case 1-1-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv y+(b^2-1)a^{t_5}\mymod,\\
+	(b+1)y-bz+(b^2-1)a^{t_5} &\equiv y+(b^2-1)a^{t_6}\mymod,\\
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv b^2-1+bx\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $y\equiv x+z \mymod$.
+Substituting this into the third congruence gives
+$y+(b^2-1)a^{t_6}\equiv b^2-1\mymod$, i.e., $c_6\sim_2 c_1$.
+Thus a matching block of size four occurs at level $s=2$, namely
+$$
+\{c_1,c_4,c_6,c_7\}\in M_2.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 1-2}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[
+        \begin{array}{ccccc}
+			0 & 0 & x & x & y\\
+            b-1 & (b-1)a^{t_2} & b-1 & b-1+\frac{b}{b+1}x & (b-1)a^{t_2}\\
+            b^2 -1 &  (b^2-1)a^{t_2} & b^2-1-bx & b^2-1 & -by+(b^2-1)a^{t_2}
+        \end{array}
+        \right.\\
+		~&~& \left. 
+        \begin{array}{cccc}
+			y & z & z\\			
+			  y+(b-1)a^{t_6} & b-1+\frac{b}{b+1}x  & y+(b-1)a^{t_6} \\			
+			y+(b^2-1)a^{t_6} & bx-bz+b^2-1 & (b+1)y-bz+(b^2-1)a^{t_6}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are six possible subcases.
+
+\paragraph{Case 1-2-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv  (b^2-1)a^{t_2}\mymod,\\
+	-by+(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv bx-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives
+$2b(z-y-x)\equiv0\mymod$,
+and hence $z\equiv x+y\mymod$. 
+Substituting this into the third congruence gives 
+$y+(b-1)a^{t_6}\equiv b-1 \mymod$, i.e., $c_6\sim_1 c_1$.
+Thus a matching block of size four occurs at level $s=1$:
+$$
+\{c_1,c_3,c_6,c_8\}\in M_1.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 1-2-2}
+$$
+\begin{cases}
+	y+(b^2-1)a^{t_6}&\equiv (b^2-1)a^{t_2}\mymod, \\
+	b^2-1-bx &\equiv bx-bz+b^2-1\mymod, \\
+	-by+(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+The second congruence gives $z\equiv2x\mymod$, and adding the first and the
+third congruences gives $z\equiv2y\mymod$. Hence $x\equiv y\mymod$.
+Therefore a matching block of size four occurs at level $s=0$:
+$$
+\{c_3,c_4,c_5,c_6\}\in M_0.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 1-2-3}
+$$
+\begin{cases}
+	y+(b^2-1)a^{t_6} &\equiv (b^2-1)a^{t_2}\mymod,\\
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod,\\
+	-by+(b^2-1)a^{t_2} &\equiv bx-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $z\equiv x+y\mymod$. Substituting this
+into the third congruence gives $a^{t_2}\equiv1\mymod$, and hence
+$c_1=c_2$ by Lemma~13 of the main manuscript, a contradiction.
+
+\paragraph{Case 1-2-4}
+$$
+\begin{cases}
+	(b^2-1)a^{t_2} &\equiv bx-bz+b^2-1\mymod, \\
+	b^2-1-bx &\equiv y+(b^2-1)a^{t_6}\mymod,\\
+    (b+1)y-bz+(b^2-1)a^{t_6}&\equiv -by+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $x\equiv y\mymod$. Substituting this
+into the second congruence gives $y+(b-1)a^{t_6}\equiv b-1\mymod$, i.e. $c_6\sim_1 c_1$.
+Since $c_1 \sim_1 c_3$ and $c_3\sim_2 c_6$,
+we obtain $c_3=c_6$ from Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 1-2-5}
+$$
+\begin{cases}
+	 (b+1)y-bz+(b^2-1)a^{t_6}&\equiv (b^2-1)a^{t_2}\mymod, \\
+	-by+(b^2-1)a^{t_2} &\equiv b^2-1-bx\mymod,\\
+	bx-bz+b^2-1 &\equiv y+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $x\equiv z\mymod$, i.e., $\{c_3,c_4,c_7,c_8\}\in M_0$, which forces $c_4=c_7$ from $c_4\sim_0 c_7$ and $c_4\sim_1 c_7$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 1-2-6}
+$$
+\begin{cases}
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv (b^2-1)a^{t_2}\mymod,  \\
+	-by+(b^2-1)a^{t_2} &\equiv bx-bz+b^2-1\mymod, \\
+	b^2-1-bx&\equiv y+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $x\equiv0\mymod$, i.e., $\{c_1,c_2,c_3,c_4\}\in M_0$ which forces
+$c_1=c_3$ from $c_1\sim_0 c_3$ and $c_1\sim_1 c_3$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 2}
+In this case, the support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{cccc}
+			0 & 0 
+			& x & x \\
+            b-1 & (b-1)a^{t_2} 
+			& b-1 & x+(b-1)a^{t_4}\\
+            b^2 -1 & (b^2-1)a^{t_2} 
+			& b^2-1-bx & x+(b^2-1)a^{t_4}
+            \end{array}
+            \right.\\
+			~&~& \left. \begin{array}{cccc}            
+			y & y 
+			& z & z\\			
+			  b-1+\frac{b}{b+1}y  & y+(b-1)a^{t_6}
+			& z+(b-1)a^{t_7} & z+(b-1)a^{t_8} \\
+			  b^2-1 & y+(b^2-1)a^{t_6}
+			& z+(b^2-1)a^{t_7} & z+(b^2-1)a^{t_8}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=1$, up to relabeling, there are five possible matchings which contain no pair already matched at level $s=0$:
+\[
+\text{Case 2-1:}\qquad
+\begin{cases}
+(b-1)a^{t_2} \equiv x+(b-1)a^{t_4}\mymod,\\
+b-1+\dfrac{b}{b+1}y \equiv z+(b-1)a^{t_7}\mymod,\\
+y+(b-1)a^{t_6} \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\[
+\text{Case 2-2:}\qquad
+\begin{cases}
+(b-1)a^{t_2} \equiv b-1+\dfrac{b}{b+1}y\mymod,\\
+x+(b-1)a^{t_4} \equiv z+(b-1)a^{t_7}\mymod,\\
+y+(b-1)a^{t_6} \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\[
+\text{Case 2-3:}\qquad
+\begin{cases}
+(b-1)a^{t_2} \equiv y+(b-1)a^{t_6}\mymod,\\
+x+(b-1)a^{t_4} \equiv z+(b-1)a^{t_7}\mymod,\\
+b-1+\dfrac{b}{b+1}y \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\[
+\text{Case 2-4:}\qquad
+\begin{cases}
+(b-1)a^{t_2} \equiv z+(b-1)a^{t_7}\mymod,\\
+x+(b-1)a^{t_4} \equiv b-1+\dfrac{b}{b+1}y\mymod,\\
+y+(b-1)a^{t_6} \equiv z+(b-1)a^{t_8}\mymod.
+\end{cases}
+\]
+\[
+\text{Case 2-5:}\qquad
+\begin{cases}
+(b-1)a^{t_2} \equiv z+(b-1)a^{t_7}\mymod,\\
+z+(b-1)a^{t_8} \equiv b-1+\dfrac{b}{b+1}y\mymod,\\
+x+(b-1)a^{t_4} \equiv y+(b-1)a^{t_6}\mymod.
+\end{cases}
+\]
+
+\paragraph{Case 2-1}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{cccc}
+			0 & 0 
+			& x & x \\
+            b-1 & (b-1)a^{t_2} 
+			& b-1 & (b-1)a^{t_2} \\
+            b^2 -1 & (b^2-1)a^{t_2} 
+			& b^2-1-bx & -bx+(b^2-1)a^{t_2}
+            \end{array}
+            \right.\\
+			~&~& \left. \begin{array}{cccc}   
+			y & y 
+			& z & z\\			
+			b-1+\frac{b}{b+1}y  & y+(b-1)a^{t_6}
+			& b-1+\frac{b}{b+1}y & y+(b-1)a^{t_6}\\
+			b^2-1 & y+(b^2-1)a^{t_6}
+			& by-bz+b^2-1 & (b+1)y-bz+(b^2-1)a^{t_6}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are seven possible subcases.
+
+\paragraph{Case 2-1-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b^2-1)a^{t_2}\mymod, \\
+	-bx+(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $z\equiv x+y\mymod$. Substituting this into the first and third congruences gives
+$y+(b^2-1)a^{t_6}\equiv (b^2-1)a^{t_2}\mymod$, i.e., $c_6\sim_2 c_2$. Therefore a matching block of size four occurs at level $s=2$:
+$$
+\{c_2,c_3,c_6,c_7\}\in M_2.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 2-1-2}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv y+(b^2-1)a^{t_6}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod, \\
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv -bx+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+This case does not force repeated support columns, and hence it gives a legal matching configuration.
+
+\paragraph{Case 2-1-3}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv y+(b^2-1)a^{t_6}\mymod,\\
+	(b+1)y-bz+(b^2-1)a^{t_6}&\equiv  (b^2-1)a^{t_2}\mymod,\\
+	-bx+(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bx\equiv0\mymod$, and hence
+$x\equiv0\mymod$. Thus $c_1=c_3$ from $c_1\sim_0 c_3$ and $c_1\sim_1 c_3$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 2-1-4}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod, \\
+	  y+(b^2-1)a^{t_6}&\equiv -bx+(b^2-1)a^{t_2}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(y-z)\mymod$, and hence
+$z\equiv y\mymod$. Thus $c_6=c_8$ from $c_6\sim_0 c_8$ and $c_6\sim_1 c_8$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 2-1-5}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv -bx+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(y-z)\mymod$, and hence
+$z\equiv y$. Similarly, $c_6=c_8$, a contradiction.
+
+\paragraph{Case 2-1-6}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv (b^2-1)a^{t_2}\mymod,\\
+	-bx+(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bx\equiv2b(y-z)\mymod$, and hence $z\equiv x+y\mymod$. Substituting this into the first congruence gives 
+$y+(b^2-1)a^{t_6}\equiv b^2-1$, i.e., $c_6\sim_2 c_1$.
+Since $c_1\sim_2 c_5$ and $c_5\sim_0 c_6$, we obtain $c_5=c_6$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 2-1-7}
+$$
+\begin{cases}
+	-bx+(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod,\\
+	y+(b^2-1)a^{t_6} &\equiv (b^2-1)a^{t_2}\mymod, \\
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bx\equiv2b(y-z)\mymod$, and hence $z\equiv x+y\mymod$. This case does not force repeated support columns, and therefore it gives a legal matching  configuration.
+
+\paragraph{Case 2-2}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{ccccc}
+			0 & 0 & x & x & y\\
+            b-1 & b-1+\frac{b}{b+1}y & b-1 & x+(b-1)a^{t_4} & b-1+\frac{b}{b+1}y \\
+            b^2 -1 & by+b^2-1 & b^2-1-bx & x+(b^2-1)a^{t_4} & b^2-1
+            \end{array}
+            \right.\\
+			~&~& \left. \begin{array}{ccc}              
+			y & z & z\\			
+			  y+(b-1)a^{t_6} & x+(b-1)a^{t_4}  & y+(b-1)a^{t_6}\\	
+            y+(b^2-1)a^{t_6} & (b+1)x-bz+(b^2-1)a^{t_4} & (b+1)y-bz+(b^2-1)a^{t_6}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are six possible subcases.
+
+\paragraph{Case 2-2-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by+b^2-1\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod,\\
+	y+(b^2-1)a^{t_6} &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+The first congruence gives $x+y\equiv0\mymod$, while adding the three congruences gives $z\equiv x+y\mymod$. Hence $z\equiv0\mymod$. Therefore a matching block of size four occurs at level $s=0$:
+$$
+\{c_1,c_2,c_7,c_8\}\in M_0.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 2-2-2}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv y+(b^2-1)a^{t_6}\mymod, \\
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv x+(b^2-1)a^{t_4}\mymod, \\
+	(b+1)x-bz+(b^2-1)a^{t_4} &\equiv by+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bz\equiv0$, and hence $z\equiv0\mymod$. Then the pair $\{c_2,c_7\}$ is matched at $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_2=c_7$, a
+contradiction.
+
+\paragraph{Case 2-2-3}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv by+(b^2-1)\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x+y-z)\mymod$, and hence $z\equiv x+y\mymod$. Substituting this into the first congruence and dividing by $b+1$ gives
+$$
+b-1+\dfrac{b}{b+1}y \equiv x+(b-1)a^{t_4}\mymod.
+$$
+Therefore a matching block of size four occurs at level $s=1$:
+$$
+\{c_2,c_4,c_5,c_7\}\in M_1.
+$$
+This gives a legal matching configuration.
+
+\paragraph{Case 2-2-4}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod, \\
+	 x+(b^2-1)a^{t_4} &\equiv y+(b^2-1)a^{t_6}\mymod,\\
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv by+(b^2-1)\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bx\equiv0\mymod$, and hence
+$x\equiv0\mymod$. Then the pair $\{c_1,c_3\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_1=c_3$, a
+contradiction.
+
+\paragraph{Case 2-2-5}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv by+(b^2-1)\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x+y-z)\mymod$, and hence $z\equiv x+y\mymod$. 
+Substituting this into the first congruence gives 
+$$
+b^2-1\equiv y+(b^2-1)a^{t_6}\mymod.
+$$
+Then the pair $\{c_5,c_6\}$ is matched at levels $s=0,2$. By
+Lemma~14 of the main manuscript, this forces $c_5=c_6$, a contradiction.
+
+\paragraph{Case 2-2-6}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv  x+(b^2-1)a^{t_4}\mymod,\\
+	(b+1)x-bz+(b^2-1)a^{t_4} &\equiv by+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $2by\equiv0$, and hence $y\equiv0\mymod$. 
+Then the pair $\{c_2,c_5\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_2=c_5$, a
+contradiction.
+
+\paragraph{Case 2-3}
+The support matrix becomes:
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{ccccc}
+			0 & 0 & x & x & y\\
+			b-1 & (b-1)a^{t_2} & b-1 & x+(b-1)a^{t_4} & b-1+\frac{b}{b+1}y\\
+            b^2 -1 & (b^2-1)a^{t_2} & b^2-1-bx & x+(b^2-1)a^{t_4} & b^2-1 
+            \end{array}
+            \right.\\
+		~&~& \left. \begin{array}{ccc}    
+			y & z & z\\ 
+			  (b-1)a^{t_2} & x+(b-1)a^{t_4}  & b-1+\frac{b}{b+1}y\\
+			-by+(b^2-1)a^{t_2} & (b+1)x-bz+(b^2-1)a^{t_4} & by-bz+b^2-1
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are six possible subcases.
+
+\paragraph{Case 2-3-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b^2-1)a^{t_2}\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod, \\
+	-by+(b^2-1)a^{t_2} &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x+y-z)\mymod$, and hence $z\equiv x+y\mymod$. 
+Substituting this into the first congruence gives
+$$
+b^2-1-bx\equiv by-bz+b^2-1\equiv x+(b^2-1)a^{t_4}\mymod.
+$$
+Then the pair $\{c_3,c_4\}$ is matched at levels $s=0,2$. By
+Lemma~14 of the main manuscript, this forces $c_3=c_4$, a contradiction.
+
+\paragraph{Case 2-3-2}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv -by+(b^2-1)a^{t_2}\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod, \\
+	(b^2-1)a^{t_2}&\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x-z)\mymod$, and hence
+$x\equiv z\mymod$. 
+Then the pair $\{c_4,c_7\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_4=c_7$, a contradiction.
+
+\paragraph{Case 2-3-3}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod,\\
+	 x+(b^2-1)a^{t_4}&\equiv (b^2-1)a^{t_2}\mymod,\\
+	-by+(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x+y-z)\mymod$, and hence $z\equiv x+y\mymod$. Moreover, the first congruence gives
+$$
+(b+1)x-bz+(b^2-1)a^{t_4}
+\equiv b^2-1-bx
+\equiv by-bz+b^2-1\mymod,
+$$
+i.e. $c_7\sim_2 c_8$.
+Because $c_7\sim_0 c_8$ and $c_7\sim_2 c_8$, this forces $c_7=c_8$ by Lemma~14 of the main manuscript, a contradiction.
+
+\paragraph{Case 2-3-4}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod, \\
+	  x+(b^2-1)a^{t_4}&\equiv -by+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x-z)\mymod$, and hence
+$x\equiv z\mymod$. Then the pair 
+$\{c_4,c_7\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_4=c_7$, a
+contradiction.
+
+\paragraph{Case 2-3-5}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod, \\
+	(b^2-1)a^{t_2} &\equiv x+(b^2-1)a^{t_4}\mymod, \\
+	(b+1)x-bz+(b^2-1)a^{t_4} &\equiv -by+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+The first congruence gives $z\equiv x+y\mymod$. This case does not force repeated support columns, and therefore it gives a legal matching configuration.
+
+\paragraph{Case 2-3-6}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod,\\
+	(b^2-1)a^{t_2} &\equiv (b+1)x-bz+(b^2-1)a^{t_4}\mymod, \\
+	   x+(b^2-1)a^{t_4}&\equiv -by+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+The first congruence gives $z\equiv x+y\mymod$. Adding the three congruences gives $0\equiv2b(x-z)\mymod$, and hence $x\equiv z\mymod$. Therefore $y\equiv0\mymod$, i.e., $c_1\sim_0 c_5$. Then the pair $\{c_1,c_5\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_1=c_5$, a contradiction.
+
+\paragraph{Case 2-4}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{ccccc}
+        	0 & 0 & x & x & y\\
+            b-1 & (b-1)a^{t_2} & b-1 & b-1+\frac{b}{b+1}y & b-1+\frac{b}{b+1}y \\
+            b^2 -1 & (b^2-1)a^{t_2} & b^2-1-bx & by-bx+b^2-1 & b^2-1 
+            \end{array}
+            \right.\\
+            ~&~& \left. \begin{array}{ccc}            
+        	y & z & z\\        	
+        	y+(b-1)a^{t_6} & (b-1)a^{t_2}   & y+(b-1)a^{t_6}\\ 
+        	y+(b^2-1)a^{t_6} & -bz+(b^2-1)a^{t_2} & (b+1)y-bz+(b^2-1)a^{t_6}
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are six possible subcases.
+
+\paragraph{Case 2-4-1}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b^2-1)a^{t_2}\mymod, \\
+	-bz+(b^2-1)a^{t_2} &\equiv y+(b^2-1)a^{t_6}\mymod, \\
+	 (b+1)y-bz+(b^2-1)a^{t_6}&\equiv by-bx+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $-2bz\equiv0\mymod$, and hence
+$z\equiv0\mymod$, i.e., $c_2\sim_0 c_7$. Then the pair $\{c_2,c_7\}$ is matched at two distinct levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_2=c_7$, a
+contradiction.
+
+\paragraph{Case 2-4-2}
+$$
+\begin{cases}
+	 y+(b^2-1)a^{t_6}&\equiv b^2-1-bx\mymod, \\
+	(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6} \mymod,\\
+	by-bx+b^2-1 &\equiv -bz+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv-2bz\mymod$, and hence
+$z\equiv0\mymod$. Similarly, this forces $c_2=c_7$, a
+contradiction.
+
+\paragraph{Case 2-4-3}
+$$
+\begin{cases}
+	  b^2-1-bx &\equiv-bz+(b^2-1)a^{t_2}\mymod,\\
+	(b^2-1)a^{t_2} &\equiv y+(b^2-1)a^{t_6}\mymod, \\
+	(b+1)y-bz+(b^2-1)a^{t_6} &\equiv by-bx+b^2-1\mymod.
+\end{cases}
+$$
+This case does not force repeated support columns, and therefore it
+gives a legal matching configuration.
+
+\paragraph{Case 2-4-4}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv -bz+(b^2-1)a^{t_2}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv by-bx+b^2-1\mymod,  \\
+	(b^2-1)a^{t_2} &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(y-z)\mymod$, and hence
+$y\equiv z\mymod$, i.e., $c_6\sim_0 c_8$. Then the pair $\{c_6,c_8\}$ is matched at $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_6=c_8$, a contradiction.
+
+\paragraph{Case 2-4-5}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv by-bx+b^2-1\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv -bz+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(y-z)\mymod$, and hence
+$y\equiv z\mymod$. Similarly, by Lemma~14 of the main manuscript, this forces $c_6=c_8$, a
+contradiction.
+
+\paragraph{Case 2-4-6}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv (b+1)y-bz+(b^2-1)a^{t_6}\mymod, \\
+	y+(b^2-1)a^{t_6} &\equiv (b^2-1)a^{t_2}\mymod, \\
+	-bz+(b^2-1)a^{t_2} &\equiv by-bx+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2by\mymod$, and hence
+$y\equiv0\mymod$. Then the pair $\{c_1,c_5\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_1=c_5$, a
+contradiction.
+
+\paragraph{Case 2-5}
+The support matrix becomes
+\begin{eqnarray*}
+		~&~&\left[\begin{array}{cccc}
+			0 & 0 &
+			x & x \\
+            b-1 & (b-1)a^{t_2} &
+			b-1 & x+(b-1)a^{t_4} \\
+            b^2-1 & (b^2-1)a^{t_2} &
+			b^2-1-bx & x+(b^2-1)a^{t_4} \\
+            \end{array}
+            \right.\\
+            ~&~& \left. \begin{array}{cccc}  
+			y & y &
+			z & z \\			
+			b-1+\frac{b}{b+1}y & x+(b-1)a^{t_4} &
+			(b-1)a^{t_2} & b-1+\frac{b}{b+1}y \\			
+			b^2-1 & (b+1)x-by+(b^2-1)a^{t_4} &
+			-bz+(b^2-1)a^{t_2} & by-bz+b^2-1
+        \end{array}
+        \right]
+        .
+\end{eqnarray*}
+At level $s=2$, up to relabeling, there are seven possible subcases.
+
+\paragraph{Case 2-5-1}
+$$
+\begin{cases}
+b^2-1-bx &\equiv (b^2-1)a^{t_2}\mymod, \\
+-bz+(b^2-1)a^{t_2} &\equiv x+(b^2-1)a^{t_4}\mymod, \\
+(b+1)x-by+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2by\mymod$, and hence
+$y\equiv0\mymod$. Then the pair $\{c_1,c_5\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_1=c_5$, a
+contradiction.
+
+\paragraph{Case 2-5-2}
+$$
+\begin{cases}
+    b^2-1-bx &\equiv (b^2-1)a^{t_2}\mymod,\\
+    x+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod,\\
+	-bz+(b^2-1)a^{t_2} &\equiv (b+1)x-by+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2bx\mymod$, and hence
+$x\equiv0\mymod$. Then the pair $\{c_1,c_3\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_1=c_3$, a
+contradiction.
+
+\paragraph{Case 2-5-3}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv  (b+1)x-by+(b^2-1)a^{t_4}\mymod,\\
+	(b^2-1)a^{t_2} &\equiv by-bz+b^2-1\mymod, \\
+	x+(b^2-1)a^{t_4}&\equiv -bz+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x-z)\mymod$, and hence
+$x\equiv z\mymod$. Then the pair $\{c_4,c_7\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_4=c_7$, a
+contradiction.
+
+\paragraph{Case 2-5-4}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv -bz+(b^2-1)a^{t_2}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv x+(b^2-1)a^{t_4}\mymod, \\
+	(b+1)x -by+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $2by\equiv2bz\mymod$, and hence
+$y\equiv z\mymod$. Then the pair $\{c_5,c_8\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_5=c_8$, a
+contradiction.
+
+\paragraph{Case 2-5-5}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv -bz+(b^2-1)a^{t_2}\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv by-bz+b^2-1\mymod, \\
+	  (b^2-1)a^{t_2}&\equiv (b+1)x-by+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+Adding the three congruences gives $0\equiv2b(x-z)\mymod$, and hence
+$x\equiv z\mymod$. Substituting this into the first congruence gives
+$$
+b^2-1\equiv (b^2-1)a^{t_2}\mymod,
+$$
+i.e., $c_1\sim_2 c_2$.
+Then the pair $\{c_1,c_2\}$ is matched at $s=0,2$. By Lemma~14 of the main manuscript, this forces $c_1=c_2$, a contradiction.
+
+\paragraph{Case 2-5-6}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod, \\
+	(b^2-1)a^{t_2} &\equiv x+(b^2-1)a^{t_4}\mymod, \\
+	(b+1)x-by+(b^2-1)a^{t_4} &\equiv -bz+(b^2-1)a^{t_2}\mymod.
+\end{cases}
+$$
+The first congruence gives $z\equiv x+y\mymod$. Adding the three
+congruences gives $0\equiv2b(y-z)$, and hence $y\equiv z\mymod$.
+Therefore $x\equiv0\mymod$. Then the pair $\{c_1,c_3\}$ is matched at levels $s=0,1$. By Lemma~14 of the main manuscript, this forces $c_1=c_3$, a contradiction.
+
+\paragraph{Case 2-5-7}
+$$
+\begin{cases}
+	b^2-1-bx &\equiv by-bz+b^2-1\mymod, \\
+	x+(b^2-1)a^{t_4} &\equiv -bz+(b^2-1)a^{t_2}\mymod, \\
+	(b^2-1)a^{t_2} &\equiv (b+1)x-by+(b^2-1)a^{t_4}\mymod.
+\end{cases}
+$$
+The first congruence gives $z\equiv x+y\mymod$. Adding the three
+congruences gives $0\equiv2b(x-z)\mymod$, and hence $x\equiv z\mymod$.
+Therefore $y\equiv0\mymod$. Then the pair $\{c_1,c_5\}$ is matched at levels $s=0,2$. By Lemma~14 of the main manuscript, this forces
+$c_1=c_5$, a contradiction.
+
+The enumeration above contains $39$ nontrivial subcases. Every
+discarded subcase forces either repeated support columns or a pair of
+distinct support columns matched at two different levels. The
+remaining subcases give the following ten legal matching
+configurations:
+$$
+1\text{-}1\text{-}1,\quad
+1\text{-}2\text{-}1,\quad
+1\text{-}2\text{-}2,\quad
+2\text{-}1\text{-}1,\quad
+2\text{-}1\text{-}2,\quad
+2\text{-}1\text{-}7,\quad
+2\text{-}2\text{-}1,\quad
+2\text{-}2\text{-}3,\quad
+2\text{-}3\text{-}5,\quad
+2\text{-}4\text{-}3.
+$$
+
+The forced $4$-matchings have been retained throughout the enumeration. Together with the pairwise-refinement procedure, this accounts for both block-size types in Lemma~20 of the main manuscript.
+
+Among the ten matching configurations, consider the permutations
+$$
+\pi_1=(1\,2)(3\,4)(5\,8)(6\,7),
+$$
+$$
+\pi_2=(1\,2)(3\,5)(4\,6)(7\,8),
+$$
+$$
+\pi_3=(1\,3)(2\,4)(5\,7)(6\,8).
+$$
+A direct verification shows that $\pi_1$ is a weight-preserving
+graph isomorphism between the matching graphs of Cases 1-1-1
+and 2-1-1, $\pi_2$ is a weight-preserving graph isomorphism
+between those of Cases 1-2-1 and 2-2-3, and $\pi_3$ is a
+weight-preserving graph isomorphism between those of Cases
+1-2-2 and 2-2-1.
+
+By Lemma~19 of the main manuscript, each of these pairs describes the same support configurations up to a weight-preserving relabeling.
+
+Consequently, it is sufficient to retain the seven representatives
+$$
+1\text{-}1\text{-}1,\quad
+1\text{-}2\text{-}1,\quad
+1\text{-}2\text{-}2,\quad
+2\text{-}1\text{-}2,\quad
+2\text{-}1\text{-}7,\quad
+2\text{-}3\text{-}5,\quad
+2\text{-}4\text{-}3.
+$$
+We denote the above seven cases by Case I--Case VII, respectively.
+This proves Proposition~29 of the main manuscript.
+\end{proof}
+\section{Conclusion}
+The preceding case analysis exhausts the pairwise refinements and all admissible same-level mergings prescribed by the enumeration procedure. Every discarded branch forces repeated support columns, whereas the surviving branches reduce, under weight-preserving relabeling, to exactly the seven representatives listed in Proposition~29. This completes the classification of weight-$8$ matching configurations.
+
+\end{document}
